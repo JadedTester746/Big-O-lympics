@@ -1,1 +1,1 @@
-# Big-O-lympics
+# Big-(O)lympics
