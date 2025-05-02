@@ -1,0 +1,113 @@
+.titleBOX{
+    display: table-cell;
+    padding-left : 5px;
+    padding-right: 5px;
+    text-align: left;
+    vertical-align: top;
+    align-items: center;
+    justify-content: center;
+    max-width:100%;
+    white-space:nowrap;
+    font-family:Verdana,'Times New Roman', Times, serif;
+}
+.test{
+    display: table-cell;
+    padding-left : 5px;
+    padding-right: 5px;
+    max-width:100%;
+    height: 50px;
+    white-space:nowrap;
+    font-family:Verdana,'Times New Roman', Times, serif;
+    border-color: green;
+    border-style: ridge;
+}
+.beginButton{
+    display: table-cell;
+    padding-left : 500px;
+    text-align: center;
+    vertical-align: middle;
+    align-items: center;
+    justify-content: center;
+}
+.table{
+    display: table;
+    
+}
+.row{
+    display: table-row;
+}
+.farCell, .farCell2{ /* These 2 were used exclusively for the Statistics and Past Problems icons.*/
+    display: table-cell;
+    max-width:100%;
+    white-space:nowrap;
+    padding-left : 975px;
+    padding-right: 10px;
+    text-align: center;
+    vertical-align: middle;
+    align-items: center;
+    justify-content: center;
+    font-family:Verdana,'Times New Roman', Times, serif;
+}
+.farCell2{
+    padding-left: 1500px;
+}
+.logo{
+    width: 50px;
+    height: 50px;
+    margin: auto;
+}
+.icon{
+    width: 175px;
+    height: 175px;
+    padding-right: 20px;
+    margin: auto;
+}
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
+
+.profile {  /* This will create the profile body/cell */
+    max-width:500px; 
+    margin:5px;  
+    border:1px 
+    solid gray; 
+    border-radius:1em; 
+
+}
+.profileText{ /* Pretty obvious lmao*/
+    display: table-cell;
+    padding-left: 5px;
+    max-width:100%;
+    white-space:nowrap;
+    text-align: left;
+    vertical-align: middle;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-cropper { /* This will make the profile icon*/
+    width: 100px;
+    height: 100px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+  }
+  
+  img { 
+    display: inline;
+    margin: 0 auto;
+    height: 100%;
+    width: auto;
+  }
