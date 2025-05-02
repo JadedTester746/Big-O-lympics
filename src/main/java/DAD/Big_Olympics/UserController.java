@@ -27,15 +27,19 @@ public class UserController {
         // Save user info to DB if not already there
         userRepository.findById(id).orElseGet(() -> {
             User newUser = new User(id, name, email, 0);
+            incrementPackets(newUser);
             return userRepository.save(newUser);
         });
+        
     
 
 
         return Collections.singletonMap("name", name);
     }
-    public static void incrementPackets(User user){
-        userRepository.findById();
+
+    public void incrementPackets(User user){
+        user.setPacket(user.getPackets() + 1);
+        userRepository.save(user);
     }
     
 }
