@@ -1,7 +1,6 @@
 .titleBOX{
-    display: table-cell;
-    padding-left : 5px;
-    padding-right: 5px;
+    display: flex;
+    padding: 5px;
     text-align: left;
     vertical-align: top;
     align-items: center;
@@ -10,46 +9,15 @@
     white-space:nowrap;
     font-family:Verdana,'Times New Roman', Times, serif;
 }
-.test{
-    display: table-cell;
-    padding-left : 5px;
-    padding-right: 5px;
-    max-width:100%;
-    height: 50px;
-    white-space:nowrap;
-    font-family:Verdana,'Times New Roman', Times, serif;
-    border-color: green;
-    border-style: ridge;
-}
-.beginButton{
-    display: table-cell;
-    padding-left : 500px;
-    text-align: center;
-    vertical-align: middle;
-    align-items: center;
-    justify-content: center;
-}
 .table{
     display: table;
     
 }
 .row{
-    display: table-row;
-}
-.farCell, .farCell2{ /* These 2 were used exclusively for the Statistics and Past Problems icons.*/
-    display: table-cell;
-    max-width:100%;
-    white-space:nowrap;
-    padding-left : 975px;
-    padding-right: 10px;
-    text-align: center;
-    vertical-align: middle;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-    font-family:Verdana,'Times New Roman', Times, serif;
-}
-.farCell2{
-    padding-left: 1500px;
+    flex-wrap: wrap;
 }
 .logo{
     width: 50px;

@@ -14,7 +14,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/h2-console/**", "/", "/index.html", "/webjars/**").permitAll()
+                .requestMatchers("/h2-console/**", "/", "/index.html", "/webjars/**", "/css/**", "/ImageFolder/**", "/js/**").permitAll()
                 .anyRequest().authenticated()
             )
             .csrf(csrf -> csrf

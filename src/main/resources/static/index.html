@@ -4,44 +4,60 @@
         <meta charset = "utf-8">
         <meta name = "viewport" content "width = device-width, initial-scale = 1">
         <title>      Big-(O)lympics</title>
-        <base href="/"/>
-        <link rel= "icon" type = "png" href = "ImageFolder/OlympicsLogo.png">
+        <link rel= "icon" type = "png" href = "/ImageFolder/OlympicsLogo.png">
         <link rel = "stylesheet" href = "css/style.css">
 
         <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
         <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
     </head>
     <body>
-
         <div class = "title">
             <div class = "row">
-                <div class = "titleBOX">
-                    <img class = "logo" src = ImageFolder/Logo.png>
+                <div class = "left-group" style = "display: flex; align-items: center;">
+                    <div class = "titleBOX">
+                        <img class = "logo" src = /ImageFolder/Logo.png>
+                    </div>
+                    <div class = "titleBOX">
+                        <a href = "index.html"> <span style = "font-size: 250%;color:rgb(10, 100, 160)"> <b>Big-(O)lympics</b> </span> </a>
+                        
+                    </div>
                 </div>
-                <div class = "titleBOX">
-                    <a href = "index.html"> <span style = "font-size: 250%;color:rgb(10, 100, 160)"> <b>Big-(O)lympics</b> </span> </a>
-                    
-                </div>
-                <div class = "farCell">
-                    <a href = "/SignUp"> <span style = "font-size: 200%;color:rgb(10, 100, 160)">  <b>Log In </b></span> </a> 
-                </div>
-                <div class = "titleBOX">
-                    <a href = "/Account"> 
-                        <div class = "profile">
-                            <div class = "row">
-                                <div class = "image-cropper">
-                                    <img src = "ImageFolder/profileIMG.jpg" class = "rounded">;
-                                </div>
-                                <div class = "profileText">
-                                    <span style = "color:rgb(0, 0, 0)">  
-                                        <p><b>Kirbo aka.The Best Coder</b></p>
-                                        <p>Test Completed: 6</p>
-                                        >D1 Thrower
-                                    </span>
+
+                <div class = "right-group" style = "display: flex; align-items: center; gap:20px;">
+                    <div class = "titleBOX">
+                        <div class="unauthenticated">
+                            <!-- Link to initiate GitHub OAuth2 login -->
+                           <a href="/oauth2/authorization/github">
+                            <span style = "font-size: 125%;color:rgb(10, 100, 160)">
+                                Click here to log in
+                            </span>
+                            </a>
+                        </div>
+                        <div class="authenticated" style="display:none">
+                            Logged in as: <span id="user"></span>
+                            <br>
+                            <!-- Logout link (optional) -->
+                            <a href="/logout">Logout</a>
+                        </div> 
+                    </div>
+                    <div class = "titleBOX">
+                        <a href = "Account.html"> 
+                            <div class = "profile">
+                                <div class = "row">
+                                    <div class = "image-cropper">
+                                        <img src = "/ImageFolder/profileIMG.jpg" class = "rounded">;
+                                    </div>
+                                    <div class = "profileText">
+                                        <span style = "color:rgb(0, 0, 0)">  
+                                            <p><b>Kirbo aka.The Best Coder</b></p>
+                                            <p>Test Completed: 6</p>
+                                            >D1 Thrower
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -56,15 +72,18 @@
         
         <div class = "title">
             <div class = "row">
-                <div class = "farCell2">
-                    <a href = "https://stratagemhero.net/">
-                        <img class = "icon" src = "ImageFolder/PastProblemsIMG.png">
-                    </a>
-                </div>
-                <div class = "titleBOX">
-                    <a href = "https://stratagemhero.net/">
-                        <img class = "icon" src = "ImageFolder/StatisticsIMG.png">
-                    </a>
+                <div class = "left-group"></div>
+                <div class = "right-group" style = "display: flex; align-items: center;">
+                    <div class = "titleBOX">
+                        <a href = "https://stratagemhero.net/">
+                            <img class = "icon" src = "/ImageFolder/PastProblemsIMG.png">
+                        </a>
+                    </div>
+                    <div class = "titleBOX">
+                        <a href = "https://stratagemhero.net/">
+                            <img class = "icon" src = "/ImageFolder/StatisticsIMG.png">
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>>
@@ -73,30 +92,22 @@
 
         <div class = "title">
             <div class = "row"> 
-                <div class = "titleBOX">
-                    <img src = "ImageFolder/Logo.png">
+                <div class = "left-group" style = "display: flex; align-items: center;">
+                    <div class = "titleBOX">
+                        <img src = "/ImageFolder/Logo.png">
+                    </div>
                 </div>
-                <div class = "beginButton">
-                    <a href="https://stratagemhero.net/">
-                        <img src="ImageFolder/Begin Written Test Image.png" />
-                    </a>
+                <div class = "right-group" style = "display: flex; align-items: center;">
+                    <div class = "titleBOX">
+                        <a href="https://stratagemhero.net/">
+                            <img src="/ImageFolder/Begin Written Test Image.png" />
+                        </a>
+                    </div>
                 </div>
+                
+                
             </div>
         </div>>
-        
-        <!-- Display information based on login state -->
-    <div class="container">
-        <div class="unauthenticated">
-            <!-- Link to initiate GitHub OAuth2 login -->
-            With GitHub: <a href="/oauth2/authorization/github">Click here to log in</a>
-        </div>
-        <div class="authenticated" style="display:none">
-            Logged in as: <span id="user"></span>
-            <br>
-            <!-- Logout link (optional) -->
-            <a href="/logout">Logout</a>
-        </div>
-    </div>
 
         <script type="text/javascript">
             // Check if the user is authenticated and update the UI accordingly
@@ -113,4 +124,6 @@
         </script>
     </body>
 </html>
+
+
 
