@@ -7,6 +7,9 @@ RUN mvn clean package -DskipTests
 # === Run Stage ===
 FROM openjdk:17-alpine
 WORKDIR /app
-COPY --from=build /app/target/*.jar app.jar
+
+# Copy the actual JAR with a wildcard
+COPY --from=build /app/target/*-SNAPSHOT.jar app.jar
+
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "app.jar"]
