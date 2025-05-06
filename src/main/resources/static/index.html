@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset = "utf-8">
-        <meta name = "viewport" content "width = device-width, initial-scale = 1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>      Big-(O)lympics</title>
         <link rel= "icon" type = "png" href = "/ImageFolder/OlympicsLogo.png">
         <link rel = "stylesheet" href = "css/style.css">
@@ -40,16 +40,19 @@
                             <a href="/logout">Logout</a>
                         </div> 
                     </div>
-                    <div class = "authenticated" style = "display:none">
-                        <div class = "titleBOX">
-                            <a href = "Account.html"> 
-                                <div class = "profile">
-                                    <div class = "row">
-                                        <div class = "image-cropper">
-                                            <img src = "/ImageFolder/profileIMG.jpg" class = "rounded">;
+                    <div class="authenticated-container" style="display: none;">
+                        <div class="titleBOX">
+                            <a href="/logout">Logout</a>
+                        </div>
+                        <div class="titleBOX">
+                            <a href="Account.html"> 
+                                <div class="profile">
+                                    <div class="row">
+                                        <div class="image-cropper">
+                                            <img src="/ImageFolder/profileIMG.jpg" class="rounded">
                                         </div>
-                                        <div class = "profileText">
-                                            <span style = "color:rgb(0, 0, 0)">  
+                                        <div class="profileText">
+                                            <span style="color:rgb(0, 0, 0)">  
                                                 <p><b><span id="user"></span></b></p>
                                                 <p>Test Completed: 6</p>
                                                 >D1 Thrower
@@ -114,14 +117,14 @@
         <script type="text/javascript">
             // Check if the user is authenticated and update the UI accordingly
             $.get("/user", function(data) {
-                // If user is logged in, show their name and hide the login link
-                $("#user").html(data.name);
-                $(".unauthenticated").hide();
-                $(".authenticated").show();
+                if (data.name) {
+                    $("#user").html(data.name);
+                    $(".unauthenticated").hide();
+                    $(".authenticated-container").show();
+                }
             }).fail(function() {
-                // If user is not authenticated, show the login link and hide the user info
                 $(".unauthenticated").show();
-                $(".authenticated").hide();
+                $(".authenticated-container").hide();
             });
         </script>
     </body>
