@@ -1,3 +1,12 @@
+document.querySelectorAll('input[type="radio"]').forEach(radio => {
+    radio.addEventListener('click', function() {
+        if (this.previous) {
+            this.checked = false;
+        }
+        this.previous = this.checked;
+    });
+});
+let timerInterval;
 function checkAnswers() {
     const answers = {
         q1: 'B',
@@ -59,24 +68,22 @@ for (let question in answers) {
         numAttempt++;
     }
 }
-if (document.getElementById('q39').value==answers["q39"]){
-    score+=6;
-    correct++;
-    numAttempt++;
-}
-else if (document.getElementById('q39')==null){
-    score-=2;
-    numAttempt++;
-}
-if (document.getElementById('q40').value==answers["q40"]){
-    score+=6;
-    correct++;
-    numAttempt++;
-}
-else if (document.getElementById('q40')==null){
-    score-=2;
-    numAttempt++;
-}
+const checkSpecificAnswer = (elemntId, correctAnswer) =>{
+    const element = document.getElementById(elemntId);
+    if (element){
+        if (element.value == correctAnswer){
+            score+=6;
+            correct++;
+            numAttempt++;
+        }
+        else if (element.value !== ""){
+            score-=2;
+            numAttempt++;
+        }
+    }
+};
+checkSpecificAnswer('q39', answers['q39']);
+checkSpecificAnswer('q40', answers['q40']);
 let resultDiv = document.getElementById('result');
 if (numAttempt==0){
     resultDiv.innerHTML = 'You did not answer any questions, you got a 0.';
@@ -84,11 +91,12 @@ if (numAttempt==0){
 else{
 resultDiv.innerHTML = `You scored a ${score} with an accuracy of ${(correct/numAttempt)*100}%.`;
 }
-window.open("Key1.html");
+window.open("611Key.html");
 const formElements = document.getElementById('quiz').elements;
 for (let i = 0; i < formElements.length; i++) {
     formElements[i].disabled = true;
 }
+clearInterval(timerInterval);
 }
 function startTimer() {
     const now = new Date();
@@ -109,6 +117,6 @@ function startTimer() {
         }
     }
     updateTimer();
-    const timerInterval = setInterval(updateTimer, 1000);
+    timerInterval = setInterval(updateTimer, 1000);
 }
 window.onload = startTimer;
