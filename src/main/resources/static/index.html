@@ -9,6 +9,21 @@
 
         <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
         <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+        <script>
+            function handleLogout() {
+                // Send logout request to the server
+                fetch('/logout', {
+                    method: 'POST',
+                    credentials: 'include' // Ensures cookies/session are included
+                }).then(() => {
+                    // Redirect to index.html after logout
+                    window.location.href = 'index.html';
+                }).catch((error) => {
+                    console.error('Logout failed:', error);
+                    window.location.href = 'index.html'; // fallback
+                });
+            }
+        </script>
     </head>
     <body>
         <div class = "title">
@@ -37,7 +52,7 @@
                             
                             <br>
                             <!-- Logout link (optional) -->
-                            <a href="/logout">Logout</a>
+                            <a href="#" onclick="handleLogout()">Logout</a>
                         </div> 
                     </div>
                     <div class="authenticated-container" style="display: none;">
