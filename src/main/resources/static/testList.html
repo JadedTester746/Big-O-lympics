@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head> 
+    <meta charset = "utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>      Big-(O)lympics</title>
+    <link rel= "icon" type = "png" href = "/ImageFolder/OlympicsLogo.png">
+    <link rel = "stylesheet" href = "css/style.css">
+
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <script>
+        function handleLogout() {
+            // Send logout request to the server
+            fetch('/logout', {
+                method: 'POST',
+                credentials: 'include' // Ensures cookies/session are included
+            }).then(() => {
+                // Redirect to index.html after logout
+                window.location.href = 'index.html';
+            }).catch((error) => {
+                console.error('Logout failed:', error);
+                window.location.href = 'index.html'; // fallback
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class = "title">
+        <div class = "row">
+            <div class = "left-group" style = "display: flex; align-items: center;">
+                <div class = "titleBOX">
+                    <img class = "logo" src = /ImageFolder/Logo.png>
+                </div>
+                <div class = "titleBOX">
+                    <a href = "index.html"> <span style = "font-size: 250%;color:rgb(10, 100, 160)"> <b>Big-(O)lympics</b> </span> </a>
+                    
+                </div>
+            </div>
+
+            <div class = "right-group" style = "display: flex; align-items: center; gap:20px;">
+                <div class = "titleBOX">
+                    <div class="unauthenticated">
+                        <!-- Link to initiate GitHub OAuth2 login -->
+                       <a href="/oauth2/authorization/github">
+                        <span style = "font-size: 125%;color:rgb(10, 100, 160)">
+                            Click here to log in
+                        </span>
+                        </a>
+                    </div>
+                    <div class="authenticated" style="display:none">
+                        
+                        <br>
+                        <!-- Logout link (optional) -->
+                        <a href="#" onclick="handleLogout()">Logout</a>
+                    </div> 
+                </div>
+                <div class="authenticated-container" style="display: none;">
+                    <div class="titleBOX">
+                        <a href="#" onclick="handleLogout()">Logout</a>
+                    </div>
+                    <div class="titleBOX">
+                        <a href="Account.html"> 
+                            <div class="profile">
+                                <div class="row">
+                                    <div class="image-cropper">
+                                        <img src="/ImageFolder/profileIMG.jpg" class="rounded">
+                                    </div>
+                                    <div class="profileText">
+                                        <span style="color:rgb(0, 0, 0)">  
+                                            <p><b><span id="user"></span></b></p>
+                                            <p>Test Completed: 6</p>
+                                            >D1 Thrower
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class = "container">
+        <span style="font-size: 120% ;color: rgb(243, 24, 24)">
+            <a href = "611APLUSTEST.html" class = "testBoxes"> <b> 6/11 A+ Test </b> </a>
+            <a href = "611APLUSTEST.html" class = "testBoxes"> <b> # A+ Test </b> </a>
+            <a href = "611APLUSTEST.html" class = "testBoxes"> <b> # A+ Test </b> </a>
+            <a href = "611APLUSTEST.html" class = "testBoxes"> <b> # A+ Test </b> </a>
+            <a href = "611APLUSTEST.html" class = "testBoxes"> <b> # A+ Test </b> </a>
+            <a href = "611APLUSTEST.html" class = "testBoxes"> <b> # A+ Test </b> </a>
+        </span>
+    </div>
+</body>
