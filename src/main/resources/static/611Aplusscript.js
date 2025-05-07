@@ -91,6 +91,21 @@ if (numAttempt==0){
 else{
 resultDiv.innerHTML = `You scored a ${score} with an accuracy of ${(correct/numAttempt)*100}%.`;
 }
+
+fetch("/api/score", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+    },
+    body: new URLSearchParams({
+        testId: "611APLUSTEST",
+        score: score
+    }),
+    credentials: "include" // needed to send session cookies for OAuth
+})
+.then(res => res.ok ? console.log("Score uploaded") : Promise.reject("Failed to upload"))
+.catch(err => console.error(err));
+
 window.open("611Key.html");
 const formElements = document.getElementById('quiz').elements;
 for (let i = 0; i < formElements.length; i++) {

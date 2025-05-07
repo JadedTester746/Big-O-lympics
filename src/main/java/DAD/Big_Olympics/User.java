@@ -31,5 +31,5 @@ public class User {
         this.completedPackets = comp;
     }
 
-    // equals(), hashCode(), toString()...
+
 }

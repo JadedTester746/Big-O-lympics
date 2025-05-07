@@ -27,7 +27,7 @@ public class UserController {
         // Save user info to DB if not already there
         userRepository.findById(id).orElseGet(() -> {
             User newUser = new User(id, name, email, 0);
-            incrementPackets(newUser);
+            
             return userRepository.save(newUser);
         });
         
@@ -40,6 +40,19 @@ public class UserController {
     public void incrementPackets(User user){
         user.setPacket(user.getPackets() + 1);
         userRepository.save(user);
+    }
+
+
+    public void completedTest(OAuth2User principal, String testId, int score){
+        String id = principal.getAttribute("id").toString();
+        try{
+            User user = userRepository.findById(id).get();
+            incrementPackets(user);
+            System.out.println("Packet uploaded for real real");
+        }catch(Exception e){}
+
+        
+
     }
     
 }
