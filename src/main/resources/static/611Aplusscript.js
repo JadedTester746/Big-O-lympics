@@ -112,7 +112,14 @@ for (let i = 0; i < formElements.length; i++) {
     formElements[i].disabled = true;
 }
 clearInterval(timerInterval);
+let button = document.createElement('button');
+button.textContent = 'Go to home';
+button.onclick = function() {
+    window.location.href = 'index.html'
+};
+resultDiv.appendChild(button);
 }
+
 function startTimer() {
     const now = new Date();
     const quizEndTime = new Date(now.getTime() + 45 * 60 * 1000);
