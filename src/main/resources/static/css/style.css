@@ -79,3 +79,6 @@ a:active {
     height: 100%;
     width: auto;
   }
+  .authenticated-container, .authenticated {
+    display: none;
+}
