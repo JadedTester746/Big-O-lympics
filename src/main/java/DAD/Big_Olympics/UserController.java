@@ -48,7 +48,7 @@ public class UserController {
         try{
             User user = userRepository.findById(id).get();
             incrementPackets(user);
-            System.out.println("Packet uploaded for real real");
+            System.out.println("score: " + score);
         }catch(Exception e){}
 
         
