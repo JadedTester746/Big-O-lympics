@@ -1,6 +1,6 @@
 package DAD.Big_Olympics;
 
-
+import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,6 +31,14 @@ public class ScoreController {
 
         return ResponseEntity.ok("Score saved");
     }
+    @GetMapping("/api/runs")
+    public List<completedRun> getAllRunsForUser(@AuthenticationPrincipal OAuth2User principal) {
+        User user = userController.getData().findById(principal.getAttribute("id").toString()).get();
+        
+        System.out.println("Loaded: " + user.getRuns().get(0).score);
+        return user.getRuns();
 
+    }
+    
 
 }

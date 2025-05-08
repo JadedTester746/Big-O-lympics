@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Packet Run Info</title>
+</head>
+<body>
+  <h1>Packet Run Details</h1>
+  <div id="output"></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      fetch('/api/runs')
+        .then(res => res.json())
+        .then(data => {
+          console.log('Received data:', data); // ✅ log to browser console
+          const output = document.getElementById('output');
+          if (Array.isArray(data) && data.length > 0) {
+            output.innerHTML = data.map(run => `
+              <p><strong>Test ID:</strong> ${run.testID}</p>
+              <p><strong>Accuracy:</strong> ${run.accuracy}%</p>
+              <p><strong>Score:</strong> ${run.score}</p>
+              <hr>
+            `).join('');
+          } else {
+            output.innerHTML = '<p>No runs found.</p>';
+          }
+        })
+        .catch(err => {
+          console.error('Failed to fetch runs:', err);
+          document.getElementById('output').innerText = 'Error fetching run data.';
+        });
+    });
+  </script>
+</body>
+</html>

@@ -15,16 +15,18 @@ public class User {
     private String name;
     private String email;
     private int completedPackets;
-    private ArrayList<completedRun>runs;
+
+    @ElementCollection
+    private List<completedRun>runs;
 
     public String getName(){return name;}
     public String getEmail(){return email;}
     public int getPackets(){return completedPackets;}
-    public ArrayList<completedRun> getRuns(){return runs;}
+    public List<completedRun> getRuns(){return runs;}
     public void setName(String name){this.name = name;}
     public void setEmail(String email){this.email = email;}
     public void setPacket(int packets){completedPackets = packets;}
-    public void addRun(completedRun run){runs.add(run);}
+    public void addRun(completedRun run){runs.add(run); run.runID = completedPackets; completedPackets++;}
 
 
     public User() {}

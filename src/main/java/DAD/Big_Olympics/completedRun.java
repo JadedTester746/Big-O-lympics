@@ -9,11 +9,15 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.persistence.Embeddable;
+
+@Embeddable
 public class completedRun {
     String testID;
     double accuracy;
     int score;
     ArrayList<Integer> missedQuestions;
+    int runID;
 
     public completedRun(String t, double a, int s){
         testID = t;
@@ -21,5 +25,20 @@ public class completedRun {
         score = s;
         missedQuestions = new ArrayList<Integer>();
         
+    }
+
+    public completedRun(){}
+
+
+    public String getTestID() {
+        return testID;
+    }
+
+    public double getAccuracy() {
+        return accuracy;
+    }
+
+    public int getScore() {
+        return score;
     }
 }

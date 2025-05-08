@@ -7,12 +7,14 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.transaction.Transactional;
+
 import java.util.Collections;
 
 @RestController
 public class UserController {
 
-    private final UserRepository userRepository;
+    final UserRepository userRepository;
 
     public UserController(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -38,22 +40,33 @@ public class UserController {
     }
 
     public void incrementPackets(User user, completedRun run){
-        user.setPacket(user.getPackets() + 1);
+
         user.addRun(run);
-        userRepository.save(user);
+        System.out.println("Packets: " + user.getRuns());
+        
     }
 
-
+    @Transactional
     public void completedTest(OAuth2User principal, String testId, int score, double accuracy){
         String id = principal.getAttribute("id").toString();
         try{
             User user = userRepository.findById(id).get();
-        
             incrementPackets(user, new completedRun(testId, accuracy, score));
-        }catch(Exception e){}
+            user.setPacket(69);
+            userRepository.save(user);
+            user = userRepository.findById(id).get();
+            System.out.println("Packets: " + user.getRuns());
+        }catch(Exception e){System.out.println("EXCEPTIN!!!!!!!!!!!!!!!!!"); e.printStackTrace();}
+
+
 
         
 
     }
-    
+
+
+    public UserRepository getData(){
+        return userRepository;
+    }
+
 }
