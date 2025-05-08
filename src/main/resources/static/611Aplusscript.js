@@ -55,17 +55,22 @@ let score = 0;
 let correct = 0;
 let numAttempt =0;
 let totalQuestions = Object.keys(answers).length;
-
+let missedQuestions = [];
 for (let question in answers) {
     let userAnswer = document.querySelector(`input[name="${question}"]:checked`);
     if (userAnswer && userAnswer.value === answers[question]) {
         score+=6;
         correct++;
         numAttempt++;
+        
     }
     else if (userAnswer){
         score-=2;
         numAttempt++;
+        missedQuestions.push(question);
+    }
+    else{
+        missedQuestions.push(question);
     }
 }
 const checkSpecificAnswer = (elemntId, correctAnswer) =>{
@@ -100,7 +105,8 @@ fetch("/api/score", {
     body: new URLSearchParams({
         testId: "611APLUSTEST",
         score: score,
-        accuracy: (correct/numAttempt)*100.0
+        accuracy: (correct/numAttempt)*100.0,
+        missed: JSON.stringify(missedQuestions)
     }),
     credentials: "include" // needed to send session cookies for OAuth
 })

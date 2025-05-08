@@ -24,10 +24,13 @@ public class ScoreController {
     public ResponseEntity<String> uploadScore(@AuthenticationPrincipal OAuth2User principal,
                                               @RequestParam String testId,
                                               @RequestParam int score,
-                                              @RequestParam double accuracy) {
+                                              @RequestParam double accuracy,
+                                              @RequestParam String missed) {
         
+                                                missed = missed.replaceAll("[\\[\\]\"]", "");
+                                                System.out.println(missed);
 
-        userController.completedTest(principal, testId, score, accuracy);
+        userController.completedTest(principal, testId, score, accuracy, missed);
 
         return ResponseEntity.ok("Score saved");
     }
@@ -35,7 +38,7 @@ public class ScoreController {
     public List<completedRun> getAllRunsForUser(@AuthenticationPrincipal OAuth2User principal) {
         User user = userController.getData().findById(principal.getAttribute("id").toString()).get();
         
-        System.out.println("Loaded: " + user.getRuns().get(0).score);
+
         return user.getRuns();
 
     }

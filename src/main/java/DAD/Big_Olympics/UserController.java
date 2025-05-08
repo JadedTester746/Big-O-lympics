@@ -47,12 +47,11 @@ public class UserController {
     }
 
     @Transactional
-    public void completedTest(OAuth2User principal, String testId, int score, double accuracy){
+    public void completedTest(OAuth2User principal, String testId, int score, double accuracy, String missed){
         String id = principal.getAttribute("id").toString();
         try{
             User user = userRepository.findById(id).get();
-            incrementPackets(user, new completedRun(testId, accuracy, score));
-            user.setPacket(69);
+            incrementPackets(user, new completedRun(testId, accuracy, score, missed));
             userRepository.save(user);
             user = userRepository.findById(id).get();
             System.out.println("Packets: " + user.getRuns());

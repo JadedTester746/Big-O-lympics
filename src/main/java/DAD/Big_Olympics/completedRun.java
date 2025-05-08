@@ -16,15 +16,16 @@ public class completedRun {
     String testID;
     double accuracy;
     int score;
-    ArrayList<Integer> missedQuestions;
-    int runID;
 
-    public completedRun(String t, double a, int s){
+    int runID;
+    String missed;
+
+    public completedRun(String t, double a, int s, String m){
         testID = t;
         accuracy = a;
         score = s;
-        missedQuestions = new ArrayList<Integer>();
-        
+        missed = m;
+
     }
 
     public completedRun(){}
@@ -40,5 +41,9 @@ public class completedRun {
 
     public int getScore() {
         return score;
+    }
+
+    public String getMissed(){
+        return missed;
     }
 }
