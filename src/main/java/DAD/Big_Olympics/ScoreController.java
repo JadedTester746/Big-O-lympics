@@ -23,10 +23,11 @@ public class ScoreController {
     @PostMapping("/api/score")
     public ResponseEntity<String> uploadScore(@AuthenticationPrincipal OAuth2User principal,
                                               @RequestParam String testId,
-                                              @RequestParam int score) {
+                                              @RequestParam int score,
+                                              @RequestParam double accuracy) {
         
 
-        userController.completedTest(principal, testId, score);
+        userController.completedTest(principal, testId, score, accuracy);
 
         return ResponseEntity.ok("Score saved");
     }

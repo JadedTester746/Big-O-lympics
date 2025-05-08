@@ -1,12 +1,12 @@
 package DAD.Big_Olympics;
 
+import java.util.Map;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.user.OAuth2User;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Map;
 import java.util.Collections;
 
 @RestController
@@ -37,18 +37,19 @@ public class UserController {
         return Collections.singletonMap("name", name);
     }
 
-    public void incrementPackets(User user){
+    public void incrementPackets(User user, completedRun run){
         user.setPacket(user.getPackets() + 1);
+        user.addRun(run);
         userRepository.save(user);
     }
 
 
-    public void completedTest(OAuth2User principal, String testId, int score){
+    public void completedTest(OAuth2User principal, String testId, int score, double accuracy){
         String id = principal.getAttribute("id").toString();
         try{
             User user = userRepository.findById(id).get();
-            incrementPackets(user);
-            System.out.println("score: " + score);
+        
+            incrementPackets(user, new completedRun(testId, accuracy, score));
         }catch(Exception e){}
 
         

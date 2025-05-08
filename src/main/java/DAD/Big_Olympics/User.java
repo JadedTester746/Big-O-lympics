@@ -2,7 +2,8 @@ package DAD.Big_Olympics;
 
 
 import jakarta.persistence.*;
-import java.util.Objects;
+import java.util.*;
+
 
 @Entity
 @Table(name = "users")
@@ -14,13 +15,17 @@ public class User {
     private String name;
     private String email;
     private int completedPackets;
+    private ArrayList<completedRun>runs;
 
     public String getName(){return name;}
     public String getEmail(){return email;}
     public int getPackets(){return completedPackets;}
+    public ArrayList<completedRun> getRuns(){return runs;}
     public void setName(String name){this.name = name;}
     public void setEmail(String email){this.email = email;}
     public void setPacket(int packets){completedPackets = packets;}
+    public void addRun(completedRun run){runs.add(run);}
+
 
     public User() {}
 
@@ -29,6 +34,8 @@ public class User {
         this.name = name;
         this.email = email;
         this.completedPackets = comp;
+        runs = new ArrayList<completedRun>();
+
     }
 
 

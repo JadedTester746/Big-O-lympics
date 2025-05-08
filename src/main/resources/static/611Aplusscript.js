@@ -99,7 +99,8 @@ fetch("/api/score", {
     },
     body: new URLSearchParams({
         testId: "611APLUSTEST",
-        score: score
+        score: score,
+        accuracy: (correct/numAttempt)*100.0
     }),
     credentials: "include" // needed to send session cookies for OAuth
 })
