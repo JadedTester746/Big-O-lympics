@@ -57,6 +57,7 @@ let numAttempt =0;
 let totalQuestions = Object.keys(answers).length;
 let missedQuestions = [];
 for (let question in answers) {
+    if (question === 'q39' || question === 'q40') continue;
     let userAnswer = document.querySelector(`input[name="${question}"]:checked`);
     if (userAnswer && userAnswer.value === answers[question]) {
         score+=6;
@@ -84,6 +85,10 @@ const checkSpecificAnswer = (elemntId, correctAnswer) =>{
         else if (element.value !== ""){
             score-=2;
             numAttempt++;
+            missedQuestions.push(elemntId);
+        }
+        else{
+            missedQuestions.push(elemntId);
         }
     }
 };
