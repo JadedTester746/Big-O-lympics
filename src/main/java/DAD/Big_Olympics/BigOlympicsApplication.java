@@ -1,5 +1,8 @@
 package DAD.Big_Olympics;
 
+import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.net.Socket;
 import java.util.Collections;
 import java.util.Map;
 
@@ -16,6 +19,12 @@ public class BigOlympicsApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(BigOlympicsApplication.class, args);
+				try (Socket socket = new Socket()) {
+    socket.connect(new InetSocketAddress("db.abc123.supabase.co", 5432), 3000);
+    System.out.println("✅ Connection successful");
+} catch (IOException e) {
+    System.err.println("❌ Connection failed: " + e.getMessage());
+}
     }
 	/* 
     @GetMapping("/user")
