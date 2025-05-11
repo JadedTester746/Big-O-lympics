@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-with, initial-scale=1.0">
+<title>Quiz</title>
+<link rel="stylesheet" href="testdesign.css">
+
+<head>
+</head>
+
+<body>
+  <main>
+    <div class="split left">
+      <div class="centered">
+        <div class="pdf">
+          <embed src="2507Test.pdf" width=100% height=100%
+            type="application/pdf">
+        </div>
+      </div>
+    </div>
+    <div class="split right">
+      <div class="centered">
+
+        <div class="text">
+          <p id="timer"></p>
+          <form id="quiz" onsubmit="checkAnswers(); return false">
+            <fieldset>
+              <legend>Question 1</legend>
+                <input type="radio" id="q1A" name="q1" value="A">
+                <label for="q1A">A</label><br>
+                <input type="radio" id="q1B" name="q1" value="B">
+                <label for="q1B">B</label><br>
+                <input type="radio" id="q1C" name="q1" value="C">
+                <label for="q1C">C</label><br>
+                <input type="radio" id="q1D" name="q1" value="D">
+                <label for="q1D">D</label><br>
+                <input type="radio" id="q1E" name="q1" value="E">
+                <label for="q1E">E</label><br>
+            </fieldset>
+            <fieldset>
+              <legend>Question 2</legend>
+                <input type="radio" id="q2A" name="q2" value="A">
+                <label for="q2A">A</label><br>
+                <input type="radio" id="q2B" name="q2" value="B">
+                <label for="q2B">B</label><br>
+                <input type="radio" id="q2C" name="q2" value="C">
+                <label for="q2C">C</label><br>
+                <input type="radio" id="q2D" name="q2" value="D">
+                <label for="q2D">D</label><br>
+                <input type="radio" id="q2E" name="q2" value="E">
+                <label for="q2E">E</label><br>
+            </fieldset>
+            <fieldset>
+              <legend>Question 3</legend>
+                <input type="radio" id="q3A" name="q3" value="A">
+                <label for="q3A">A</label><br>
+                <input type="radio" id="q3B" name="q3" value="B">
+                <label for="q3B">B</label><br>
+                <input type="radio" id="q3C" name="q3" value="C">
+                <label for="q3C">C</label><br>
+                <input type="radio" id="q3D" name="q3" value="D">
+                <label for="q3D">D</label><br>
+                <input type="radio" id="q3E" name="q3" value="E">
+                <label for="q3E">E</label><br>
+            </fieldset>
+
+            <fieldset>
+              <legend>Question 4</legend>
+                <input type="radio" id="q4A" name="q4" value="A">
+                <label for="q4A">A</label><br>
+                <input type="radio" id="q4B" name="q4" value="B">
+                <label for="q4B">B</label><br>
+                <input type="radio" id="q4C" name="q4" value="C">
+                <label for="q4C">C</label><br>
+                <input type="radio" id="q4D" name="q4" value="D">
+                <label for="q4D">D</label><br>
+                <input type="radio" id="q4E" name="q4" value="E">
+                <label for="q4E">E</label><br>
+            </fieldset>
+
+            <fieldset>
+              <legend>Question 5</legend>
+                <input type="radio" id="q5A" name="q5" value="A">
+                <label for="q5A">A</label><br>
+                <input type="radio" id="q5B" name="q5" value="B">
+                <label for="q5B">B</label><br>
+                <input type="radio" id="q5C" name="q5" value="C">
+                <label for="q5C">C</label><br>
+                <input type="radio" id="q5D" name="q5" value="D">
+                <label for="q5D">D</label><br>
+                <input type="radio" id="q5E" name="q5" value="E">
+                <label for="q5E">E</label><br>
+            </fieldset>
+
+            <fieldset>
+              <legend>Question 6</legend>
+                <input type="radio" id="q6A" name="q6" value="A">
+                <label for="q6A">A</label><br>
+                <input type="radio" id="q6B" name="q6" value="B">
+                <label for="q6B">B</label><br>
+                <input type="radio" id="q6C" name="q6" value="C">
+                <label for="q6C">C</label><br>
+                <input type="radio" id="q6D" name="q6" value="D">
+                <label for="q6D">D</label><br>
+                <input type="radio" id="q6E" name="q6" value="E">
+                <label for="q6E">E</label><br>
+            </fieldset>
+
+            <fieldset>
+              <legend>Question 7</legend>
+                <input type="radio" id="q7A" name="q7" value="A">
+                <label for="q7A">A</label><br>
+                <input type="radio" id="q7B" name="q7" value="B">
+                <label for="q7B">B</label><br>
+                <input type="radio" id="q7C" name="q7" value="C">
+                <label for="q7C">C</label><br>
+                <input type="radio" id="q7D" name="q7" value="D">
+                <label for="q7D">D</label><br>
+                <input type="radio" id="q7E" name="q7" value="E">
+                <label for="q7E">E</label><br>
+            </fieldset>
+
+            <fieldset>
+              <legend>Question 8</legend>
+                <input type="radio" id="q8A" name="q8" value="A">
+                <label for="q8A">A</label><br>
+                <input type="radio" id="q8B" name="q8" value="B">
+                <label for="q8B">B</label><br>
+                <input type="radio" id="q8C" name="q8" value="C">
+                <label for="q8C">C</label><br>
+                <input type="radio" id="q8D" name="q8" value="D">
+                <label for="q8D">D</label><br>
+                <input type="radio" id="q8E" name="q8" value="E">
+                <label for="q8E">E</label><br>
+            </fieldset>
+
+            <fieldset>
+              <legend>Question 9</legend>
+                <input type="radio" id="q9A" name="q9" value="A">
+                <label for="q9A">A</label><br>
+                <input type="radio" id="q9B" name="q9" value="B">
+                <label for="q9B">B</label><br>
+                <input type="radio" id="q9C" name="q9" value="C">
+                <label for="q9C">C</label><br>
+                <input type="radio" id="q9D" name="q9" value="D">
+                <label for="q9D">D</label><br>
+                <input type="radio" id="q9E" name="q9" value="E">
+                <label for="q9E">E</label><br>
+            </fieldset>
+
+            <fieldset>
+              <legend>Question 10</legend>
+                <input type="radio" id="q10A" name="q10" value="A">
+                <label for="q10A">A</label><br>
+                <input type="radio" id="q10B" name="q10" value="B">
+                <label for="q10B">B</label><br>
+                <input type="radio" id="q10C" name="q10" value="C">
+                <label for="q10C">C</label><br>
+                <input type="radio" id="q10D" name="q10" value="D">
+                <label for="q10D">D</label><br>
+                <input type="radio" id="q10E" name="q10" value="E">
+                <label for="q10E">E</label><br>
+            </fieldset>
+
+            <fieldset>
+              <legend>Question 11</legend>
+                <input type="radio" id="q11A" name="q11" value="A">
+                <label for="q11A">A</label><br>
+                <input type="radio" id="q11B" name="q11" value="B">
+                <label for="q11B">B</label><br>
+                <input type="radio" id="q11C" name="q11" value="C">
+                <label for="q11C">C</label><br>
+                <input type="radio" id="q11D" name="q11" value="D">
+                <label for="q11D">D</label><br>
+                <input type="radio" id="q11E" name="q11" value="E">
+                <label for="q11E">E</label><br>
+            </fieldset>
+
+            <fieldset>
+              <legend>Question 12</legend>
+                <input type="radio" id="q12A" name="q12" value="A">
+                <label for="q12A">A</label><br>
+                <input id="q12B" name="q12" type="radio" value="B">
+                <label for="q12B">B</label><br>
+                <input type="radio" id="q12C" name="q12" value="C">
+                <label for="q12C">C</label><br>
+                <input type="radio" id="q12D" name="q12" value="D">
+                <label for="q12D">D</label><br>
+                <input type="radio" id="q12E" name="q12" value="E">
+                <label for="q12E">E</label><br>
+            </fieldset>
+
+            <fieldset>
+              <legend>Question 13</legend>
+                <input type="radio" id="q13A" name="q13" value="A">
+                <label for="q13A">A</label><br>
+                <input type="radio" id="q13B" name="q13" value="B">
+                <label for="q13B">B</label><br>
+                <input type="radio" id="q13C" name="q13" value="C">
+                <label for="q13C">C</label><br>
+                <input type="radio" id="q13D" name="q13" value="D">
+                <label for="q13D">D</label><br>
+                <input type="radio" id="q13E" name="q13" value="E">
+                <label for="q13E">E</label><br>
+            </fieldset>
+
+            <fieldset>
+              <legend>Question 14</legend>
+                <input type="radio" id="q14A" name="q14" value="A">
+                <label for="q14A">A</label><br>
+                <input type="radio" id="q14B" name="q14" value="B">
+                <label for="q14B">B</label><br>
+                <input type="radio" id="q14C" name="q14" value="C">
+                <label for="q14C">C</label><br>
+                <input type="radio" id="q14D" name="q14" value="D">
+                <label for="q14D">D</label><br>
+                <input type="radio" id="q14E" name="q14" value="E">
+                <label for="q14E">E</label><br>
+            </fieldset>
+
+            <fieldset>
+              <legend>Question 15</legend>
+                <input type="radio" id="q15A" name="q15" value="A">
+                <label for="q15A">A</label><br>
+                <input type="radio" id="q15B" name="q15" value="B">
+                <label for="q15B">B</label><br>
+                <input type="radio" id="q15C" name="q15" value="C">
+                <label for="q15C">C</label><br>
+                <input type="radio" id="q15D" name="q15" value="D">
+                <label for="q15D">D</label><br>
+                <input type="radio" id="q15E" name="q15" value="E">
+                <label for="q15E">E</label><br>
+            </fieldset>
+
+            <fieldset>
+              <legend>Question 16</legend>
+                <input type="radio" id="q16A" name="q16" value="A">
+                <label for="q16A">A</label><br>
+                <input type="radio" id="q16B" name="q16" value="B">
+                <label for="q16B">B</label><br>
+                <input type="radio" id="q16C" name="q16" value="C">
+                <label for="q16C">C</label><br>
+                <input type="radio" id="q16D" name="q16" value="D">
+                <label for="q16D">D</label><br>
+                <input type="radio" id="q16E" name="q16" value="E">
+                <label for="q16E">E</label><br>
+            </fieldset>
+
+            <fieldset>
+              <legend>Question 17</legend>
+                <input type="radio" id="q17A" name="q17" value="A">
+                <label for="q17A">A</label><br>
+                <input type="radio" id="q17B" name="q17" value="B">
+                <label for="q17B">B</label><br>
+                <input type="radio" id="q17C" name="q17" value="C">
+                <label for="q17C">C</label><br>
+                <input type="radio" id="q17D" name="q17" value="D">
+                <label for="q17D">D</label><br>
+                <input type="radio" id="q17E" name="q17" value="E">
+                <label for="q17E">E</label><br>
+            </fieldset>
+
+            <fieldset>
+              <legend>Question 18</legend>
+                <input type="radio" id="q18A" name="q18" value="A">
+                <label for="q18A">A</label><br>
+                <input type="radio" id="q18B" name="q18" value="B">
+                <label for="q18B">B</label><br>
+                <input type="radio" id="q18C" name="q18" value="C">
+                <label for="q18C">C</label><br>
+                <input type="radio" id="q18D" name="q18" value="D">
+                <label for="q18D">D</label><br>
+                <input type="radio" id="q18E" name="q18" value="E">
+                <label for="q18E">E</label><br>
+            </fieldset>
+
+            <fieldset>
+              <legend>Question 19</legend>
+                <input type="radio" id="q19A" name="q19" value="A">
+                <label for="q19A">A</label><br>
+                <input type="radio" id="q19B" name="q19" value="B">
+                <label for="q19B">B</label><br>
+                <input type="radio" id="q19C" name="q19" value="C">
+                <label for="q19C">C</label><br>
+                <input type="radio" id="q19D" name="q19" value="D">
+                <label for="q19D">D</label><br>
+                <input type="radio" id="q19E" name="q19" value="E">
+                <label for="q19E">E</label><br>
+            </fieldset>
+
+            <fieldset>
+              <legend>Question 20</legend>
+                <input type="radio" id="q20A" name="q20" value="A">
+                <label for="q20A">A</label><br>
+                <input type="radio" id="q20B" name="q20" value="B">
+                <label for="q20B">B</label><br>
+                <input type="radio" id="q20C" name="q20" value="C">
+                <label for="q20C">C</label><br>
+                <input type="radio" id="q20D" name="q20" value="D">
+                <label for="q20D">D</label><br>
+                <input type="radio" id="q20E" name="q20" value="E">
+                <label for="q20E">E</label><br>
+            </fieldset>
+
+            <fieldset>
+              <legend>Question 21</legend>
+              <input type="radio" id="q21A" name="q21" value="A">
+                <label for="q21A">A</label><br>
+                <input type="radio" id="q21B" name="q21" value="B">
+                <label for="q21B">B</label><br>
+                <input type="radio" id="q21C" name="q21" value="C">
+                <label for="q21C">C</label><br>
+                <input type="radio" id="q21D" name="q21" value="D">
+                <label for="q21D">D</label><br>
+                <input type="radio" id="q21E" name="q21" value="E">
+                <label for="q21E">E</label><br>
+            </fieldset>
+
+            <fieldset>
+              <legend>Question 22</legend>
+                <input type="radio" id="q22A" name="q22" value="A">
+                <label for="q22A">A</label><br>
+                <input type="radio" id="q22B" name="q22" value="B">
+                <label for="q22B">B</label><br>
+                <input type="radio" id="q22C" name="q22" value="C">
+                <label for="q22C">C</label><br>
+                <input type="radio" id="q22D" name="q22" value="D">
+                <label for="q22D">D</label><br>
+                <input type="radio" id="q22E" name="q22" value="E">
+                <label for="q22E">E</label><br>
+            </fieldset>
+
+            <fieldset>
+              <legend>Question 23</legend>
+                <input type="radio" id="q23A" name="q23" value="A">
+                <label for="q23A">A</label><br>
+                <input type="radio" id="q23B" name="q23" value="B">
+                <label for="q23B">B</label><br>
+                <input type="radio" id="q23C" name="q23" value="C">
+                <label for="q23C">C</label><br>
+                <input type="radio" id="q23D" name="q23" value="D">
+                <label for="q23D">D</label><br>
+                <input type="radio" id="q23E" name="q23" value="E">
+                <label for="q23E">E</label><br>
+            </fieldset>
+
+            <fieldset>
+              <legend>Question 24</legend>
+                <input type="radio" id="q24A" name="q24" value="A">
+                <label for="q24A">A</label><br>
+                <input type="radio" id="q24B" name="q24" value="B">
+                <label for="q24B">B</label><br>
+                <input type="radio" id="q24C" name="q24" value="C">
+                <label for="q24C">C</label><br>
+                <input type="radio" id="q24D" name="q24" value="D">
+                <label for="q24D">D</label><br>
+                <input type="radio" id="q24E" name="q24" value="E">
+                <label for="q24E">E</label><br>
+            </fieldset>
+
+            <fieldset>
+              <legend>Question 25</legend>
+                <input type="radio" id="q25A" name="q25" value="A">
+                <label for="q25A">A</label><br>
+                <input type="radio" id="q25B" name="q25" value="B">
+                <label for="q25B">B</label><br>
+                <input type="radio" id="q25C" name="q25" value="C">
+                <label for="q25C">C</label><br>
+                <input type="radio" id="q25D" name="q25" value="D">
+                <label for="q25D">D</label><br>
+                <input type="radio" id="q25E" name="q25" value="E">
+                <label for="q25E">E</label><br>
+            </fieldset>
+
+            <fieldset>
+              <legend>Question 26</legend>
+                <input type="radio" id="q26A" name="q26" value="A">
+                <label for="q26A">A</label><br>
+                <input type="radio" id="q26B" name="q26" value="B">
+                <label for="q26B">B</label><br>
+                <input type="radio" id="q26C" name="q26" value="C">
+                <label for="q26C">C</label><br>
+                <input type="radio" id="q26D" name="q26" value="D">
+                <label for="q26D">D</label><br>
+                <input type="radio" id="q26E" name="q26" value="E">
+                <label for="q26E">E</label><br>
+            </fieldset>
+
+            <fieldset>
+              <legend>Question 27</legend>
+                <input type="radio" id="q27A" name="q27" value="A">
+                <label for="q27A">A</label><br>
+                <input type="radio" id="q27B" name="q27" value="B">
+                <label for="q27B">B</label><br>
+                <input type="radio" id="q27C" name="q27" value="C">
+                <label for="q27C">C</label><br>
+                <input type="radio" id="q27D" name="q27" value="D">
+                <label for="q27D">D</label><br>
+                <input type="radio" id="q27E" name="q27" value="E">
+                <label for="q27E">E</label><br>
+            </fieldset>
+
+            <fieldset>
+              <legend>Question 28</legend>
+                <input type="radio" id="q28A" name="q28" value="A">
+                <label for="q28A">A</label><br>
+                <input type="radio" id="q28B" name="q28" value="B">
+                <label for="q28B">B</label><br>
+                <input type="radio" id="q28C" name="q28" value="C">
+                <label for="q28C">C</label><br>
+                <input type="radio" id="q28D" name="q28" value="D">
+                <label for="q28D">D</label><br>
+                <input type="radio" id="q28E" name="q28" value="E">
+                <label for="q28E">E</label><br>
+            </fieldset>
+
+            <fieldset>
+              <legend>Question 29</legend>
+                <input type="radio" id="q29A" name="q29" value="A">
+                <label for="q29A">A</label><br>
+                <input type="radio" id="q29B" name="q29" value="B">
+                <label for="q29B">B</label><br>
+                <input type="radio" id="q29C" name="q29" value="C">
+                <label for="q29C">C</label><br>
+                <input type="radio" id="q29D" name="q29" value="D">
+                <label for="q29D">D</label><br>
+                <input type="radio" id="q29E" name="q29" value="E">
+                <label for="q29E">E</label><br>
+            </fieldset>
+
+            <fieldset>
+              <legend>Question 30</legend>
+                <input type="radio" id="q30A" name="q30" value="A">
+                <label for="q30A">A</label><br>
+                <input type="radio" id="q30B" name="q30" value="B">
+                <label for="q30B">B</label><br>
+                <input type="radio" id="q30C" name="q30" value="C">
+                <label for="q30C">C</label><br>
+                <input type="radio" id="q30D" name="q30" value="D">
+                <label for="q30D">D</label><br>
+                <input type="radio" id="q30E" name="q30" value="E">
+                <label for="q30E">E</label><br>
+            </fieldset>
+
+            <fieldset>
+              <legend>Question 31</legend>
+                <input type="radio" id="q31A" name="q31" value="A">
+                <label for="q31A">A</label><br>
+                <input type="radio" id="q31B" name="q31" value="B">
+                <label for="q31B">B</label><br>
+                <input type="radio" id="q31C" name="q31" value="C">
+                <label for="q31C">C</label><br>
+                <input type="radio" id="q31D" name="q31" value="D">
+                <label for="q31D">D</label><br>
+                <input type="radio" id="q31E" name="q31" value="E">
+                <label for="q31E">E</label><br>
+            </fieldset>
+
+            <fieldset>
+              <legend>Question 32</legend>
+                <input type="radio" id="q32A" name="q32" value="A">
+                <label for="q32A">A</label><br>
+                <input type="radio" id="q32B" name="q32" value="B">
+                <label for="q32B">B</label><br>
+                <input type="radio" id="q32C" name="q32" value="C">
+                <label for="q32C">C</label><br>
+                <input type="radio" id="q32D" name="q32" value="D">
+                <label for="q32D">D</label><br>
+                <input type="radio" id="q32E" name="q32" value="E">
+                <label for="q32E">E</label><br>
+            </fieldset>
+
+            <fieldset>
+              <legend>Question 33</legend>
+                <input type="radio" id="q33A" name="q33" value="A">
+                <label for="q33A">A</label><br>
+                <input type="radio" id="q33B" name="q33" value="B">
+                <label for="q33B">B</label><br>
+                <input type="radio" id="q33C" name="q33" value="C">
+                <label for="q33C">C</label><br>
+                <input type="radio" id="q33D" name="q33" value="D">
+                <label for="q33D">D</label><br>
+                <input type="radio" id="q33E" name="q33" value="E">
+                <label for="q33E">E</label><br>
+            </fieldset>
+
+            <fieldset>
+              <legend>Question 34</legend>
+                <input type="radio" id="q34A" name="q34" value="A">
+                <label for="q34A">A</label><br>
+                <input type="radio" id="q34B" name="q34" value="B">
+                <label for="q34B">B</label><br>
+                <input type="radio" id="q34C" name="q34" value="C">
+                <label for="q34C">C</label><br>
+                <input type="radio" id="q34D" name="q34" value="D">
+                <label for="q34D">D</label><br>
+                <input type="radio" id="q34E" name="q34" value="E">
+                <label for="q34E">E</label><br>
+            </fieldset>
+
+            <fieldset>
+              <legend>Question 35</legend>
+                <input type="radio" id="q35A" name="q35" value="A">
+                <label for="q35A">A</label><br>
+                <input type="radio" id="q35B" name="q35" value="B">
+                <label for="q35B">B</label><br>
+                <input type="radio" id="q35C" name="q35" value="C">
+                <label for="q35C">C</label><br>
+                <input type="radio" id="q35D" name="q35" value="D">
+                <label for="q35D">D</label><br>
+                <input type="radio" id="q35E" name="q35" value="E">
+                <label for="q35E">E</label><br>
+            </fieldset>
+
+            <fieldset>
+              <legend>Question 36</legend>
+                <input type="radio" id="q36A" name="q36" value="A">
+                <label for="q36A">A</label><br>
+                <input type="radio" id="q36B" name="q36" value="B">
+                <label for="q36B">B</label><br>
+                <input type="radio" id="q36C" name="q36" value="C">
+                <label for="q36C">C</label><br>
+                <input type="radio" id="q36D" name="q36" value="D">
+                <label for="q36D">D</label><br>
+                <input type="radio" id="q36E" name="q36" value="E">
+                <label for="q36E">E</label><br>
+            </fieldset>
+
+            <fieldset>
+              <legend>Question 37</legend>
+               <input type="text" id="37" name="q37">
+                <label for="q37">Insert Answer in box</label><br>
+            </fieldset>
+
+            <fieldset>
+              <legend>Question 38</legend>
+                <input type="text" id="q38" name="q38">
+                <label for="q38">Insert Answer in box</label><br>
+            </fieldset>
+
+            <fieldset>
+              <legend>Question 39</legend>
+              <input type="text" id="q39" name="q39">
+                <label for="q39">Insert Answer in box</label><br>
+            </fieldset>
+
+
+            <fieldset>
+              <legend>Question 40</legend>
+              <input type="text" id="q40" name="q40">
+                <label for="q40">Insert Answer in box</label><br>
+            </fieldset>
+
+            <br>
+            <br>
+            <br>
+            <input type="submit" value="Submit">
+          </form>
+          <div id="result"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script src="2507APLUS.js"></script>
+</body>
+
+</html>
