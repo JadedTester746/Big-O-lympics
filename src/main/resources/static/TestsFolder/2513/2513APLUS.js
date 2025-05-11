@@ -55,32 +55,40 @@ let score = 0;
 let correct = 0;
 let numAttempt =0;
 let totalQuestions = Object.keys(answers).length;
-
+let missedQuestions = [];
 for (let question in answers) {
+    if (question === 'q39' || question === 'q40') continue;
     let userAnswer = document.querySelector(`input[name="${question}"]:checked`);
     if (userAnswer && userAnswer.value === answers[question]) {
         score+=6;
         correct++;
         numAttempt++;
+        
     }
     else if (userAnswer){
         score-=2;
         numAttempt++;
+        missedQuestions.push(question);
+    }
+    else{
+        missedQuestions.push(question);
     }
 }
 const checkSpecificAnswer = (elemntId, correctAnswer) =>{
     const element = document.getElementById(elemntId);
     if (element){
-        const userInput = String(element.value).trim().toUpperCase();
-        const expectedAnswer = String(correctAnswer).trim().toUpperCase();
-
-        if (userInput === expectedAnswer){
-            score += 6;
+        if (element.value == correctAnswer){
+            score+=6;
             correct++;
             numAttempt++;
-        } else if (element.value !== ""){
-            score -= 2;
+        }
+        else if (element.value !== ""){
+            score-=2;
             numAttempt++;
+            missedQuestions.push(elemntId);
+        }
+        else{
+            missedQuestions.push(elemntId);
         }
     }
 };
@@ -93,6 +101,23 @@ if (numAttempt==0){
 else{
 resultDiv.innerHTML = `You scored a ${score} with an accuracy of ${(correct/numAttempt)*100}%.`;
 }
+
+fetch("/api/score", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+    },
+    body: new URLSearchParams({
+        testId: "2513APLUSTEST",
+        score: score,
+        accuracy: (correct/numAttempt)*100.0,
+        missed: JSON.stringify(missedQuestions)
+    }),
+    credentials: "include" // needed to send session cookies for OAuth
+})
+.then(res => res.ok ? console.log("Score uploaded") : Promise.reject("Failed to upload"))
+.catch(err => console.error(err));
+
 window.open("2513Key.html");
 const formElements = document.getElementById('quiz').elements;
 for (let i = 0; i < formElements.length; i++) {
@@ -100,12 +125,13 @@ for (let i = 0; i < formElements.length; i++) {
 }
 clearInterval(timerInterval);
 let button = document.createElement('button');
-button.textContent = 'Go to Test Index';
+button.textContent = 'Go to home';
 button.onclick = function() {
-    window.location.href = 'Test Indexd.html'
+    window.location.href = '/index.html'
 };
 resultDiv.appendChild(button);
 }
+
 function startTimer() {
     const now = new Date();
     const quizEndTime = new Date(now.getTime() + 45 * 60 * 1000);
@@ -114,7 +140,7 @@ function startTimer() {
         const currentTime = new Date().getTime();
         const timeRemaining = quizEndTime-currentTime;
 
-        if (timeRemaining<=0){d
+        if (timeRemaining<=0){
             clearInterval(timerInterval);
             timerElement.textContent = "Time's up!";
             checkAnswers();
