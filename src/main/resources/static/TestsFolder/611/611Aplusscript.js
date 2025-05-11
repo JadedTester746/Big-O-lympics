@@ -127,7 +127,7 @@ clearInterval(timerInterval);
 let button = document.createElement('button');
 button.textContent = 'Go to home';
 button.onclick = function() {
-    window.location.href = 'index.html'
+    window.location.href = '/index.html'
 };
 resultDiv.appendChild(button);
 }
