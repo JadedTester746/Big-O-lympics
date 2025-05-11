@@ -37,48 +37,6 @@
                     
                 </div>
             </div>
-
-            <div class = "right-group" style = "display: flex; align-items: center; gap:20px;">
-                <div class = "titleBOX">
-                    <div class="unauthenticated">
-                        <!-- Link to initiate GitHub OAuth2 login -->
-                       <a href="/oauth2/authorization/github">
-                        <span style = "font-size: 125%;color:rgb(10, 100, 160)">
-                            Click here to log in
-                        </span>
-                        </a>
-                    </div>
-                    <div class="authenticated" style="display:none">
-                        
-                        <br>
-                        <!-- Logout link (optional) -->
-                        <a href="#" onclick="handleLogout()">Logout</a>
-                    </div> 
-                </div>
-                <div class="authenticated-container" style="display: none;">
-                    <div class="titleBOX">
-                        <a href="#" onclick="handleLogout()">Logout</a>
-                    </div>
-                    <div class="titleBOX">
-                        <a href="Account.html"> 
-                            <div class="profile">
-                                <div class="row">
-                                    <div class="image-cropper">
-                                        <img src="/ImageFolder/profileIMG.jpg" class="rounded">
-                                    </div>
-                                    <div class="profileText">
-                                        <span style="color:rgb(0, 0, 0)">  
-                                            <p><b><span id="user"></span></b></p>
-                                            <p>Test Completed: 6</p>
-                                            >D1 Thrower
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -94,4 +52,18 @@
             <a href = "611APLUSTEST.html" class = "testBoxes"> <b> # A+ Test </b> </a>
         </span>
     </div>
+
+    <script type="text/javascript">
+        // Check if the user is authenticated and update the UI accordingly
+        $.get("/user", function(data) {
+            if (data.name) {
+                $("#user").html(data.name);
+                $(".unauthenticated").hide();
+                $(".authenticated-container").show();
+            }
+        }).fail(function() {
+            $(".unauthenticated").show();
+            $(".authenticated-container").hide();
+        });
+    </script>
 </body>
