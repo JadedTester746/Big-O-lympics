@@ -5,6 +5,7 @@ import java.util.Map;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.transaction.Transactional;
@@ -46,7 +47,12 @@ public Map<String, Object> user(@AuthenticationPrincipal OAuth2User principal) {
         System.out.println("Packets: " + user.getRuns());
         
     }
-
+    @GetMapping("/namechange")
+    public void changeName(@RequestParam String name, @AuthenticationPrincipal OAuth2User principal){
+        User user = userRepository.findById(principal.getAttribute("id").toString()).get();
+        user.setName(name);
+        userRepository.save(user);
+    }
     @Transactional
     public void completedTest(OAuth2User principal, String testId, int score, double accuracy, String missed){
         String id = principal.getAttribute("id").toString();
