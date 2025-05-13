@@ -45,6 +45,41 @@
         </div>
     
         <hr>
+        <div class="name-change-box" style="margin: 20px;">
+            <label for="newName">Change display name:</label>
+            <input type="text" id="newName" placeholder="Enter new name">
+            <button onclick="changeName()">Submit</button>
+            <p id="nameChangeStatus" style="color: green;"></p>
+        </div>
 
     </body>
+    <script>
+        function changeName() {
+            const newName = document.getElementById('newName').value.trim();
+            if (!newName) {
+                alert("Please enter a valid name.");
+                return;
+            }
+    
+            fetch(`/namechange?name=${encodeURIComponent(newName)}`, {
+                method: "GET",
+                credentials: "include"
+            })
+            .then(res => {
+                if (res.ok) {
+                    document.getElementById('nameChangeStatus').textContent = "Name updated successfully!";
+                    document.getElementById('user').textContent = newName;
+                } else {
+                    document.getElementById('nameChangeStatus').style.color = "red";
+                    document.getElementById('nameChangeStatus').textContent = "Failed to update name.";
+                }
+            })
+            .catch(err => {
+                document.getElementById('nameChangeStatus').style.color = "red";
+                document.getElementById('nameChangeStatus').textContent = "Error contacting server.";
+                console.error(err);
+            });
+        }
+    </script>
+    
 </html>
