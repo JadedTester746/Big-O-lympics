@@ -70,7 +70,7 @@
                                             <span style="color:rgb(0, 0, 0)">  
                                                 <p><b><span id="user"></span></b></p>
                                                 <p>Tests Completed:<b><span id="completedPackets"></span></b></p>
-                                                >D1 Thrower
+                                                <p><b><span id = "titleText"></span></b></p>
                                             </span>
                                         </div>
                                     </div>
@@ -137,6 +137,53 @@
                     $("#completedPackets").html(data.completedPackets || 0); // <-- add this line
                     $(".unauthenticated").hide();
                     $(".authenticated-container").show();
+
+                    let packets = data.completedPackets || 0;
+                    let title = ">D1 Thrower";
+
+                    if(packets >= 100){
+                        title = ">What's Grass?";
+                    }
+                    else if(packets >= 90){
+                        title = ">How...";
+                    }
+                    else if(packets >= 80){
+                        title = ">Look Mom, No Shower!";
+                    }
+                    else if(packets >= 70){
+                        title = ">Eat,Sleep,CSUIL,Repeat";
+                    }
+                    else if(packets >= 60){
+                        if(packets == 69){
+                            title = ">nice";
+                        }
+                        else{
+                            title = ">Maidenless & Mutable"
+                        }
+                    }
+                    else if(packets >= 50){
+                        title = ">404 Girlfriend Not Found";
+                    }
+                    else if(packets >= 40){
+                        title = ">Terminally Testing";
+                    }
+                    else if(packets >= 30){
+                        title = ">Goat";
+                    }
+                    else if(packets >= 20){
+                        title = ">Locked In";
+                    }
+                    else if(packets >= 15){
+                        title = ">Git Gud or Get Out";
+                    }
+                    else if(packets >= 10){
+                        title = ">Mid";
+                    }
+                    else if(packets >= 5){
+                        title = ">NOT Locked In";
+                    }
+
+                    $("#titleText").html(title);
                 }
             }).fail(function() {
                 $(".unauthenticated").show();
