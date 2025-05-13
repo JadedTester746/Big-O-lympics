@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import jakarta.transaction.Transactional;
 
 import java.util.Collections;
+import java.util.HashMap;
 
 @RestController
 public class UserController {
@@ -20,24 +21,24 @@ public class UserController {
         this.userRepository = userRepository;
     }
      
-    @GetMapping("/user")
-    public Map<String, Object> user(@AuthenticationPrincipal OAuth2User principal) {
-        String id = principal.getAttribute("id").toString();
-        String name = principal.getAttribute("name");
-        String email = principal.getAttribute("email");
-        System.out.println("Name: " + name);
-        // Save user info to DB if not already there
-        userRepository.findById(id).orElseGet(() -> {
-            User newUser = new User(id, name, email, 0);
-            
-            return userRepository.save(newUser);
-        });
-        
-    
+@GetMapping("/user")
+public Map<String, Object> user(@AuthenticationPrincipal OAuth2User principal) {
+    String id = principal.getAttribute("id").toString();
+    String name = principal.getAttribute("name");
+    String email = principal.getAttribute("email");
 
+    // Fetch from DB or create new if not found
+    User user = userRepository.findById(id).orElseGet(() -> {
+        User newUser = new User(id, name, email, 0);
+        return userRepository.save(newUser);
+    });
 
-        return Collections.singletonMap("name", name);
-    }
+    // Return both name and completedPackets
+    Map<String, Object> result = new HashMap<>();
+    result.put("name", user.getName());
+    result.put("completedPackets", user.getPackets());
+    return result;
+}
 
     public void incrementPackets(User user, completedRun run){
 
