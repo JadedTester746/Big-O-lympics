@@ -16,49 +16,38 @@
                     </div>
                     <div class = "titleBOX">
                         <a href = "index.html"> <span style = "font-size: 250%;color:rgb(10, 100, 160)"> <b>Big-(O)lympics</b> </span> </a>
-                        
-                    </div>
-                </div>
-
-                <div class = "right-group" style = "display: flex; align-items: center; gap:20px;">
-                
-                    <div class = "titleBOX">
-                        <a href = "Account.html"> 
-                            <div class = "profile">
-                                <div class = "row">
-                                    <div class = "image-cropper">
-                                        <img src = "ImageFolder/profileIMG.jpg" class = "rounded">;
-                                    </div>
-                                    <div class = "profileText">
-                                        <span style = "color:rgb(0, 0, 0)">  
-                                            <p><b><span id="user"></span></b></p>
-                                            <p>Tests Completed:<b><span id="completedPackets"></span></b></p>
-                                            <p>>D1 Thrower</p>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
                     </div>
                 </div>
             </div>
         </div>
     
         <hr>
-        <div class="name-change-box" style="margin: 20px;">
-            <label for="newName">Change display name:</label>
-            <input type="text" id="newName" placeholder="Enter new name">
-            <button onclick="changeName()">Submit</button>
-            <p id="nameChangeStatus" style="color: green;"></p>
-        </div>
-        
-        <h3>Upload Profile Picture</h3>
-        <form id="uploadForm" enctype="multipart/form-data">
-            <input type="file" name="file" accept="image/*" required>
-            <button type="submit">Upload</button>
-        </form>
-        <img id="preview" src="/profile-pic" class="rounded" onerror="this.src='ImageFolder/default.jpg'" style="margin-top: 10px; width: 100px; border-radius: 50%;">
+        <div class = "title">
+            <div class = "row">
+                <div class="profile" id="profileContainer" style="width: 500px; height: 500px;">
+                    <img id="preview" src="/profile-pic" class="rounded" 
+                        onerror="this.src='ImageFolder/default.jpg'" 
+                        style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
 
+                    <h3 style="margin-top: 20px;">Upload Profile Picture</h3>
+                    <form id="uploadForm" enctype="multipart/form-data">
+                        <input type="file" name="file" accept="image/*" required>
+                        <button type="submit">Upload</button>
+                    </form>
+
+                    <div class="name-change-box" style="margin-top: 20px;">
+                        <label for="newName">Change display name:</label>
+                        <input type="text" id="newName" placeholder="Enter new name">
+                        <button onclick="changeName()">Submit</button>
+                        <p id="nameChangeStatus" style="color: green;"></p>
+                    </div>  
+                    <br>
+                    <b>Display Name: <span id="user"></span></b> <br>
+                    <b>Tests Completed: <span id="completedPackets"></span></b> <br>
+                    <b>Current Title: <span id = "titleText"></span></b> <br>
+                </div>
+            </div>
+        </div>
     </body>
     <script>
         function changeName() {
