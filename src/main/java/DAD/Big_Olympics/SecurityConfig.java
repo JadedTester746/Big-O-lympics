@@ -16,7 +16,7 @@ public class SecurityConfig {
             .authorizeHttpRequests(auth -> auth
                 // Define all the specific URL patterns before `anyRequest()`
                 .requestMatchers("/h2-console/**", "/", "/index.html", "/webjars/**", "/css/**", "/ImageFolder/**", "/js/**").permitAll()
-                .requestMatchers("/api/score", "/api/runs").authenticated()  // /api/score should be authenticated
+                .requestMatchers("/api/score", "/api/runs", "/uploadProfilePic", "/profile-pic").authenticated()  // /api/score should be authenticated
                 // All other endpoints require authentication
                 .anyRequest().authenticated()
             )
