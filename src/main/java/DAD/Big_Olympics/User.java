@@ -20,7 +20,6 @@ public class User {
     private List<completedRun>runs;
 
     @Lob
-    @Column(name = "profile_picture", columnDefinition = "LONGBLOB")
     private byte[] profilePicture;
 
     // Getter & Setter
