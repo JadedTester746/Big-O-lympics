@@ -106,20 +106,20 @@ public Map<String, Object> user(@AuthenticationPrincipal OAuth2User principal) {
     }
 
     @GetMapping("/profile-pic")
-public ResponseEntity<byte[]> getProfilePic(@AuthenticationPrincipal OAuth2User principal) {
-    String id = principal.getAttribute("id").toString();
-    Optional<User> optionalUser = userRepository.findById(id);
+    public ResponseEntity<byte[]> getProfilePic(@AuthenticationPrincipal OAuth2User principal) {
+        String id = principal.getAttribute("id").toString();
+        Optional<User> optionalUser = userRepository.findById(id);
 
-    if (optionalUser.isPresent() && optionalUser.get().getProfilePicture() != null) {
-        byte[] image = optionalUser.get().getProfilePicture();
+        if (optionalUser.isPresent() && optionalUser.get().getProfilePicture() != null) {
+            byte[] image = optionalUser.get().getProfilePicture();
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.IMAGE_JPEG);
-        return new ResponseEntity<>(image, headers, HttpStatus.OK);
-    } else {
-        return ResponseEntity.notFound().build();
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.IMAGE_JPEG);
+            return new ResponseEntity<>(image, headers, HttpStatus.OK);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
-}
 
     
 }
