@@ -21,7 +21,7 @@ public class SecurityConfig {
                 .anyRequest().authenticated()
             )
             .csrf(csrf -> csrf
-                .ignoringRequestMatchers("/h2-console/**", "/api/score") // Disable CSRF for H2 Console
+                .ignoringRequestMatchers("/h2-console/**", "/api/score", "/uploadProfilePic") // Disable CSRF for H2 Console
             )
             .headers(headers -> headers
                 .frameOptions(frame -> frame
