@@ -86,7 +86,8 @@ public Map<String, Object> user(@AuthenticationPrincipal OAuth2User principal) {
     @PostMapping("/uploadProfilePic")
     public ResponseEntity<?> uploadProfilePic(@AuthenticationPrincipal OAuth2User principal,
                                           @RequestParam("file") MultipartFile file) {
-                                            System.out.println("RANNN!!!!!!!");
+                                            
+        System.out.println("RANNN!!!!!!!");
         String id = principal.getAttribute("id").toString();
         Optional<User> optionalUser = userRepository.findById(id);
 
