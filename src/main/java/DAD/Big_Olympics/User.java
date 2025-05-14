@@ -19,6 +19,18 @@ public class User {
     @ElementCollection
     private List<completedRun>runs;
 
+    @Lob
+    private byte[] profilePicture;
+
+    // Getter & Setter
+    public byte[] getProfilePicture() {
+        return profilePicture;
+        }
+
+    public void setProfilePicture(byte[] profilePicture) {
+        this.profilePicture = profilePicture;
+    }   
+
     public String getName(){return name;}
     public String getEmail(){return email;}
     public int getPackets(){return completedPackets;}

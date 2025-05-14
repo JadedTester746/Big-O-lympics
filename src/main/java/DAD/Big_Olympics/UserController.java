@@ -1,15 +1,23 @@
 package DAD.Big_Olympics;
 
 import java.util.Map;
+import java.util.Optional;
 
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import jakarta.transaction.Transactional;
 
+import java.io.IOException;
 import java.util.Collections;
 import java.util.HashMap;
 
@@ -75,4 +83,43 @@ public Map<String, Object> user(@AuthenticationPrincipal OAuth2User principal) {
         return userRepository;
     }
 
+    @PostMapping("/uploadProfilePic")
+    public ResponseEntity<?> uploadProfilePic(@AuthenticationPrincipal OAuth2User principal,
+                                          @RequestParam("file") MultipartFile file) {
+                                            
+        System.out.println("RANNN!!!!!!!");
+        String id = principal.getAttribute("id").toString();
+        Optional<User> optionalUser = userRepository.findById(id);
+
+        if (optionalUser.isPresent()) {
+            User user = optionalUser.get();
+            try {
+                user.setProfilePicture(file.getBytes());
+                userRepository.save(user);
+                return ResponseEntity.ok().build();
+        }    catch (IOException e) {
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error saving image.");
+            }
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found.");
+        }
+    }
+
+    @GetMapping("/profile-pic")
+public ResponseEntity<byte[]> getProfilePic(@AuthenticationPrincipal OAuth2User principal) {
+    String id = principal.getAttribute("id").toString();
+    Optional<User> optionalUser = userRepository.findById(id);
+
+    if (optionalUser.isPresent() && optionalUser.get().getProfilePicture() != null) {
+        byte[] image = optionalUser.get().getProfilePicture();
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.IMAGE_JPEG);
+        return new ResponseEntity<>(image, headers, HttpStatus.OK);
+    } else {
+        return ResponseEntity.notFound().build();
+    }
+}
+
+    
 }

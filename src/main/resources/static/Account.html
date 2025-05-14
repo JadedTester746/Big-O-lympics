@@ -51,6 +51,12 @@
             <button onclick="changeName()">Submit</button>
             <p id="nameChangeStatus" style="color: green;"></p>
         </div>
+        <h3>Upload Profile Picture</h3>
+<form id="uploadForm" enctype="multipart/form-data">
+    <input type="file" name="file" accept="image/*" required>
+    <button type="submit">Upload</button>
+</form>
+<img id="preview" src="/profile-pic" class="rounded" onerror="this.src='ImageFolder/default.jpg'" style="margin-top: 10px; width: 100px; border-radius: 50%;">
 
     </body>
     <script>
@@ -80,6 +86,26 @@
                 console.error(err);
             });
         }
+    </script>
+
+<script>
+    document.getElementById("uploadForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+    
+        fetch("/uploadProfilePic", {
+            method: "POST",
+            body: formData,
+            credentials: "include"
+        }).then(res => {
+            if (res.ok) {
+                alert("Upload successful!");
+                document.getElementById("preview").src = "/profile-pic?" + new Date().getTime(); // prevent caching
+            } else {
+                alert("Upload failed.");
+            }
+        });
+    });
     </script>
     
 </html>
