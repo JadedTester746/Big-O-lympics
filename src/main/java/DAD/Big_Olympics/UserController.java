@@ -37,9 +37,10 @@ public Map<String, Object> user(@AuthenticationPrincipal OAuth2User principal) {
     String name = principal.getAttribute("name");
     String email = principal.getAttribute("email");
 
+   
     // Fetch from DB or create new if not found
     User user = userRepository.findById(id).orElseGet(() -> {
-        User newUser = new User(id, name, email, 0);
+        User newUser = new User(id, name != null ? name : "NO NAME SET", email != null ? email : "NO EMAIL SET", 0);
         return userRepository.save(newUser);
     });
 
