@@ -11,6 +11,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.HttpStatusEntryPoint;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -35,6 +36,7 @@ public class ScoreController {
         return ResponseEntity.ok("Score saved");
     }
     @GetMapping("/api/runs")
+    @Transactional(readOnly = true)
     public List<completedRun> getAllRunsForUser(@AuthenticationPrincipal OAuth2User principal) {
         User user = userController.getData().findById(principal.getAttribute("id").toString()).get();
         

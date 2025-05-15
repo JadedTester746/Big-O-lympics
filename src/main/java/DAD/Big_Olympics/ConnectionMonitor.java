@@ -14,7 +14,7 @@ public class ConnectionMonitor {
         this.dataSource = dataSource;
     }
 
-    @Scheduled(fixedRate = 10000) // every 10 seconds
+    @Scheduled(fixedRate = 60000) // every 10 seconds
     public void logPoolStats() {
         var pool = dataSource.getHikariPoolMXBean();
         System.out.println("Active: " + pool.getActiveConnections() +
