@@ -31,8 +31,8 @@ public class User {
         this.profilePicture = profilePicture;
     }   
 
-    public String getName(){return name;}
-    public String getEmail(){return email;}
+    public String getName(){return name != null ? name : "NO NAME";}
+    public String getEmail(){return email != null ? email : "NO EMAIL";}
     public int getPackets(){return completedPackets;}
     public List<completedRun> getRuns(){return runs;}
     public void setName(String name){this.name = name;}
