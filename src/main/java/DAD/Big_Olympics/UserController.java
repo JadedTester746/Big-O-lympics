@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 import java.util.Collections;
@@ -31,6 +31,7 @@ public class UserController {
     }
      
 @GetMapping("/user")
+@Transactional
 public Map<String, Object> user(@AuthenticationPrincipal OAuth2User principal) {
     String id = principal.getAttribute("id").toString();
     String name = principal.getAttribute("name");
@@ -46,8 +47,8 @@ public Map<String, Object> user(@AuthenticationPrincipal OAuth2User principal) {
     Map<String, Object> result = new HashMap<>();
     result.put("name", user.getName());
     result.put("completedPackets", user.getPackets());
-    return result;
-}
+    return result;  
+    }
 
     public void incrementPackets(User user, completedRun run){
 
@@ -56,6 +57,7 @@ public Map<String, Object> user(@AuthenticationPrincipal OAuth2User principal) {
         
     }
     @GetMapping("/namechange")
+    @Transactional
     public void changeName(@RequestParam String name, @AuthenticationPrincipal OAuth2User principal){
         User user = userRepository.findById(principal.getAttribute("id").toString()).get();
         user.setName(name);
@@ -84,6 +86,7 @@ public Map<String, Object> user(@AuthenticationPrincipal OAuth2User principal) {
     }
 
     @PostMapping("/uploadProfilePic")
+    @Transactional
     public ResponseEntity<?> uploadProfilePic(@AuthenticationPrincipal OAuth2User principal,
                                           @RequestParam("file") MultipartFile file) {
                                             
@@ -106,6 +109,7 @@ public Map<String, Object> user(@AuthenticationPrincipal OAuth2User principal) {
     }
 
     @GetMapping("/profile-pic")
+    @Transactional(readOnly = true)
     public ResponseEntity<byte[]> getProfilePic(@AuthenticationPrincipal OAuth2User principal) {
         String id = principal.getAttribute("id").toString();
         Optional<User> optionalUser = userRepository.findById(id);

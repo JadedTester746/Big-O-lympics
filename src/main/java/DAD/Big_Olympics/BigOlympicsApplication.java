@@ -19,12 +19,7 @@ public class BigOlympicsApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(BigOlympicsApplication.class, args);
-				try (Socket socket = new Socket()) {
-    socket.connect(new InetSocketAddress("db.abc123.supabase.co", 5432), 3000);
-    System.out.println("✅ Connection successful");
-} catch (IOException e) {
-    System.err.println("❌ Connection failed: " + e.getMessage());
-}
+
     }
 	/* 
     @GetMapping("/user")
